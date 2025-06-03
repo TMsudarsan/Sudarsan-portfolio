@@ -8,7 +8,7 @@ const Hero = () => {
     <>
       <section className="h-screen bg-gradient-to-b from-violet-900 to-black flex xl:flex-row flex-col-reverse items-center justify-between lg:px-18 px-10 relative overflow-hidden">
         {/* left section */}
-        <div className="z-40 xl:mt-20 xl:mb-0 mb-[12%]">
+        <div className="z-40 xl:mt-20 xl:mb-0 mb-[12%] pb-36 md:pb-0">
           <motion.h1
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ const Hero = () => {
               delay: 1.6,
               duration: 1.5,
             }}
-            className="  h-10 sm:h-12 md:h-20  text-violet-200 hover:text-violet-300 "
+            className="  h-12 md:h-20  text-violet-200 hover:text-violet-300 "
           >
             <div className="text-3xl md:text-5xl lg:text-6xl font-bold z-10 mb-6">
               <FlipWords
