@@ -6,18 +6,10 @@ import { createContext, useState } from "react";
  const Hero = () => {
 
   const [isopen, setIsopen] = useState(false);
-  
-    const [contactform,setContactform] = useState(false);
-  
-    const opencontact = ()=>setContactform(true)
-    const closecontact = ()=>setContactform(false)
-  
-    const togglemenubtn = () => setIsopen(!isopen);
-    
   return (
 <>
     
-      <section className="h-screen bg-gradient-to-b from-violet-900 to-black flex xl:flex-row flex-col-reverse items-center justify-between lg:px-18 px-10 relative overflow-hidden">
+      <section className="h-screen bg-gradient-to-b from-violet-900 to-black flex xl:flex-row flex-col-reverse items-center justify-between lg:px-18 md:px-10 px-6 relative overflow-hidden">
         {/* left section */}
         <div className="z-40 xl:mt-20 xl:mb-0 mb-[12%] pb-44 md:pb-0">
           <motion.h1
@@ -85,7 +77,7 @@ import { createContext, useState } from "react";
               duration: 1.5,
             }}
            href="#contact">
-            <button  className="mt-4 px-4 py-2 rounded-xl bg-gradient-to-r from-gray-400 to-gray-100 text-violet-600 font-bold hover:from-violet-700 hover:to-purple-700 hover:text-white transition-all duration-500 md:hidden">Contact Me</button>
+            <button  className="mt-6 px-4 py-2 text-lg rounded-xl bg-gradient-to-r from-gray-400 to-gray-100 text-violet-600 font-bold hover:from-violet-700 hover:to-purple-700 hover:text-white transition-all duration-500 md:hidden">Contact Me</button>
           </motion.a>
         </div>
         {/* right side */}

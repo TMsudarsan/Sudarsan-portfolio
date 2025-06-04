@@ -2,7 +2,7 @@
 import   { useState, useEffect } from 'react';
 import { FiMail, FiPhone,   FiCopy, FiDownload } from 'react-icons/fi';
 
-const ContactPage = ({ setCurrentPage }) => {
+const ContactPage = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
@@ -105,7 +105,8 @@ const ContactPage = ({ setCurrentPage }) => {
           </div>
           <div className="flex justify-center items-center">
             <a
-            href={`#`} // Path relative to public folder
+            href={`sudarsan-portfolio.pdf`}  
+            download
              
             className="
               inline-flex items-center justify-center
