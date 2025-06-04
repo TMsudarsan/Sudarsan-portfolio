@@ -1,14 +1,25 @@
 import { motion } from "framer-motion";
 import Spline from "@splinetool/react-spline";
-import { useEffect } from "react";
 import { FlipWords } from "./Flipword";
-const Hero = () => {
+import Header from "./Header";
+import { createContext, useState } from "react";
+ const Hero = () => {
+
+  const [isopen, setIsopen] = useState(false);
   
+    const [contactform,setContactform] = useState(false);
+  
+    const opencontact = ()=>setContactform(true)
+    const closecontact = ()=>setContactform(false)
+  
+    const togglemenubtn = () => setIsopen(!isopen);
+    
   return (
-    <>
+<>
+    
       <section className="h-screen bg-gradient-to-b from-violet-900 to-black flex xl:flex-row flex-col-reverse items-center justify-between lg:px-18 px-10 relative overflow-hidden">
         {/* left section */}
-        <div className="z-40 xl:mt-20 xl:mb-0 mb-[12%] pb-36 md:pb-0">
+        <div className="z-40 xl:mt-20 xl:mb-0 mb-[12%] pb-44 md:pb-0">
           <motion.h1
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
@@ -37,7 +48,11 @@ const Hero = () => {
           >
             <div className="text-3xl md:text-5xl lg:text-6xl font-bold z-10 mb-6">
               <FlipWords
-                words={["I'm a MERN STACK DEV..", "I Love To Code..", "I Build Things To Web"]}
+                words={[
+                  "I'm a MERN STACK DEV..",
+                  "I Love To Code..",
+                  "I Build Things To Web",
+                ]}
               />
             </div>
           </motion.div>
@@ -59,6 +74,19 @@ const Hero = () => {
             seamlessly integrate frontend designs with powerful backend
             functionality to deliver complete full-stack solutions
           </motion.p>
+          <motion.a
+           initial={{ opacity: 0, x: 80 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 40,
+              damping: 25,
+              delay: 1.9,
+              duration: 1.5,
+            }}
+           href="#contact">
+            <button  className="mt-4 px-4 py-2 rounded-xl bg-gradient-to-r from-gray-400 to-gray-100 text-violet-600 font-bold hover:from-violet-700 hover:to-purple-700 hover:text-white transition-all duration-500 md:hidden">Contact Me</button>
+          </motion.a>
         </div>
         {/* right side */}
         <Spline

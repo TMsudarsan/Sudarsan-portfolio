@@ -1,15 +1,38 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FiGithub, FiTwitter, FiLinkedin, FiX, FiMenu } from "react-icons/fi";
-const Header = () => {
+ const Header = () => {
   const [isopen, setIsopen] = useState(false);
-
+ 
   const [contactform,setContactform] = useState(false);
 
   const opencontact = ()=>setContactform(true)
   const closecontact = ()=>setContactform(false)
 
   const togglemenubtn = () => setIsopen(!isopen);
+     const onSubmit = async (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+  
+      formData.append("access_key", "a1446f41-df23-4ff2-890b-cad7d884e1cf");
+  
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+  
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: json
+      }).then((res) => res.json());
+  
+      if (res.success) {
+        console.log("Success", res);
+      }
+    };
+
   return (
     <header className="absolute w-full z-50 transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20   ">
@@ -187,18 +210,22 @@ const Header = () => {
               </h1>
               <button onClick={closecontact}><FiX className="w-5 h-5 text-gray-300 font-extrabold"/></button>
             </div>
-            <form action="Get" className="space-y-4">
+            <form onSubmit={onSubmit} className="space-y-4">
                <div className="">
                 <label htmlFor="name" className="block  text-sm font-medium text-gray-300 mb-1">Name</label>
                 <input type="text"
+                required
                 id="name"
+                name="name"
                 placeholder="Your Name"
                 className="w-full px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 bg-gray-700" />
                </div>
                <div className="">
                 <label htmlFor="email" className="block  text-sm font-medium text-gray-300 mb-1">Email</label>
                 <input type="text"
+                required
                 id="email"
+                name="email"
                 placeholder="Your Email"
                 className="w-full px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 bg-gray-700" />
                </div>
@@ -206,11 +233,14 @@ const Header = () => {
                 <label htmlFor="message" className="block  text-sm font-medium text-gray-300 mb-1">Message</label>
                 <textarea rows="4"
                 id="message"
+                name="message"
+                required
                 placeholder="Any Enquiry"
                 className="w-full px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 bg-gray-700" />
                </div>
                <motion.button 
                type="submit"
+               onClick={closecontact}
                whileHover={{scale: 1.03}}
                whileTap={{scale: 0.97}}
                className="w-full px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-400 hover:from-violet-700 hover:to-violet-700 transition-all  duration-300 rounded-lg shadow-md hover:shadow-lg hover:shadow-violet-600">Send Message</motion.button>
