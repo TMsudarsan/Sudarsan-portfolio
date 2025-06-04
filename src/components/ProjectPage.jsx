@@ -62,7 +62,7 @@ const projectData = [
 ];
 
 
-const ProjectsPage = ({ setCurrentPage }) => {
+const ProjectsPage = ( ) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -110,7 +110,7 @@ const ProjectsPage = ({ setCurrentPage }) => {
                   src={project.imageUrl}
                   alt={project.title}
                   className="w-full h-48 object-cover"
-                  onError={(e) => { e.target.style.display = 'none'; /* Hide if image fails to load */ }}
+                  onError={(e) => { e.target.style.display = 'none';  }}
                 />
               ) : (
                 <div className={`w-full h-48 bg-gradient-to-br ${project.bgColorFrom} ${project.bgColorTo} flex items-center justify-center`}>
